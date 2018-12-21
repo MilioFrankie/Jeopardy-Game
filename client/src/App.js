@@ -3,15 +3,14 @@ import { Container } from "semantic-ui-react";
 import { Switch, Route } from "react-router-dom";
 import Jeopardy from "./components/Jeopardy";
 import NavBar from "./components/NavBar";
-import CategoryForm from "./components/CategoryForm";
-
+import FetchCategories from "./components/FetchCategories";
 const App = () => (
   <Fragment>
     <NavBar />
     <Container>
       <Switch>
         <Route exact path="/" component={Jeopardy} />
-        <Route exact path="/categoryForm" component={CategoryForm} />
+        <Route path="/createGame" component={FetchCategories} />
       </Switch>
     </Container>
   </Fragment>

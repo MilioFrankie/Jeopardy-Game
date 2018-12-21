@@ -34,13 +34,7 @@ class CategoryForm extends React.Component {
             <Form.Button color="green">Submit</Form.Button>
           </Form>
         </Segment>
-        <Header as="h1" textAlign="center">
-          YOUR CATEGORIES
-        </Header>
-        <hr />
-        <Segment>
-          <h3>Generate list of catgories as links here</h3>
-        </Segment>
+  
       </div>
     );
   }

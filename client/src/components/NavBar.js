@@ -24,7 +24,7 @@ class NavBar extends React.Component {
           active={activeItem === "createGame"}
           onClick={this.handleItemClick}
         >
-          <Link to="/categoryForm">Create Game</Link>
+          <Link to="/createGame">Create Game</Link>
         </Menu.Item>
         <Menu.Item
           name="play"

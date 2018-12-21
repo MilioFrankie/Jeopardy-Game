@@ -8,6 +8,7 @@ class Api::CategoriesController < ApplicationController
 
   def show
     render json: @category
+  end
   
   def create
     category = Category.new(category_params)
