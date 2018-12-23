@@ -13,6 +13,7 @@ class FetchCategories extends React.Component {
     return (
       <div>
         <Route exact path="/createGame" component={Category} />
+        <Route exact path="/createGame/:id/createGame"/>
       </div>
     );
   }

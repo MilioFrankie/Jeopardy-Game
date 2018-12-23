@@ -21,6 +21,16 @@ export const addCategory = category => {
   };
 };
 
+export const deleteCategory = id => {
+  return dispatch => {
+    debugger;
+    axios
+      .delete(`/api/categories/${id}`)
+
+      .then(() => dispatch({ type: DELETE_CATEGORY, id }));
+  };
+};
+
 export default (state = [], action) => {
   switch (action.type) {
     case CATEGORY:
