@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 import Category from "./Category";
 import { getCategories } from "../reducers/category";
+import CategoryView from "./CategoryView";
 
 class FetchCategories extends React.Component {
   componentDidMount() {
@@ -13,7 +14,11 @@ class FetchCategories extends React.Component {
     return (
       <div>
         <Route exact path="/createGame" component={Category} />
-        <Route exact path="/createGame/:id/createGame"/>
+        <Route
+          exact
+          path="/createGame/:id/createQuestion"
+          component={CategoryView}
+        />
       </div>
     );
   }

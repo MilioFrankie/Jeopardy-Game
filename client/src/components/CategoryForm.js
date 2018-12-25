@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Segment, Header } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { addCategory } from "../reducers/category";
+import { addCategory, updateCategory } from "../reducers/category";
 
 class CategoryForm extends React.Component {
   state = { name: "" };
@@ -14,8 +14,10 @@ class CategoryForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     const category = { ...this.state };
-    const { dispatch } = this.props;
-    dispatch(addCategory(category));
+    const { clsoseForm, dispatch } = this.props;
+    const func = this.props.id ? updateCategory : addCategory;
+    dispatch(func(category));
+    clsoseForm()
   };
 
   render() {
@@ -23,7 +25,7 @@ class CategoryForm extends React.Component {
     return (
       <div>
         <Segment inverted>
-          <Form inverted onClick={this.handleSubmit}>
+          <Form inverted onSubmit={this.handleSubmit}>
             <Form.Input
               name="name"
               value={name}
@@ -34,7 +36,6 @@ class CategoryForm extends React.Component {
             <Form.Button color="green">Submit</Form.Button>
           </Form>
         </Segment>
-  
       </div>
     );
   }

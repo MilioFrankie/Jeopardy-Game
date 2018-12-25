@@ -6,6 +6,14 @@ import { getCategories, deleteCategory } from "../reducers/category";
 import { Link } from "react-router-dom";
 
 class Category extends React.Component {
+  state = { showForm: false };
+
+  toggleForm = () => {
+    this.setState(state => {
+      return { showForm: !state.showForm };
+    });
+  };
+
   handleDelete = id => {
     const {
       categories,
@@ -17,20 +25,30 @@ class Category extends React.Component {
   };
 
   renderCategories = () => {
+    const { showForm } = this.state;
     const { categories } = this.props;
     return categories.map(c => (
       <h2>
         <Segment raised>
+          <Link to={`createGame/${c.id}/createQuestion`}>
+            <Button color="green" floated="right">
+              View
+            </Button>
+          </Link>
+          {/* <Button.Group floated="right">
+            <Button color="blue" onClick={this.toggleForm}>
+              Edit
+            </Button>
+            <Button.Or /> */}
           <Button
-            color="red"
             floated="right"
+            color="red"
             onClick={() => this.handleDelete(c.id)}
           >
             Delete
           </Button>
-          <Link to={`createGame/${c.id}/createQuestions`}>
-            <h2>{c.name}</h2>
-          </Link>
+          {/* </Button.Group> */}
+          <h2>{c.name}</h2>
         </Segment>
       </h2>
     ));

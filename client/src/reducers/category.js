@@ -21,9 +21,16 @@ export const addCategory = category => {
   };
 };
 
+export const updateCategory = category => {
+  return dispatch => {
+    axios
+      .put(`/api/categories/${category.id}`, { category })
+      .then(res => dispatch({ type: UPDATE_CATEGORY, cateegory: res.data }));
+  };
+};
+
 export const deleteCategory = id => {
   return dispatch => {
-    debugger;
     axios
       .delete(`/api/categories/${id}`)
 
