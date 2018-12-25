@@ -1,10 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
+import QuestionForm from "./QuestionForm";
 
 class CategoryView extends React.Component {
-  
-  
-  
   render() {
     const { category } = this.props;
 
@@ -12,8 +10,8 @@ class CategoryView extends React.Component {
     return (
       <div>
         <h1>{name}</h1>
-        <hr /> 
-        <h3>Create your Questions (limit 4 questions)</h3>
+        <hr />
+        <QuestionForm />
       </div>
     );
     // or this
