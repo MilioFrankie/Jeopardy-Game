@@ -1,8 +1,9 @@
 import React from "react";
 import { Segment, Form } from "semantic-ui-react";
 import { connect } from "react-redux";
+import { addCard } from "../reducers/card";
 
-class QuestionForm extends React.Component {
+class CardForm extends React.Component {
   state = { question: "", correctAnswer: "" };
 
   handleChange = e => {
@@ -11,6 +12,10 @@ class QuestionForm extends React.Component {
   };
   handleSubmit = e => {
     e.preventDefault();
+    const question = { ...this.state };
+    const { categoryId, dispatch } = this.props;
+    debugger;
+    dispatch(addCard(question, categoryId));
   };
 
   render() {
@@ -43,4 +48,4 @@ class QuestionForm extends React.Component {
   }
 }
 
-export default connect()(QuestionForm);
+export default connect()(CardForm);

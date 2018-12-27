@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 import Category from "./Category";
 import { getCategories } from "../reducers/category";
-import CategoryView from "./CategoryView";
+import FetchCards from "./FetchCards";
 
 class FetchCategories extends React.Component {
   componentDidMount() {
@@ -17,7 +17,7 @@ class FetchCategories extends React.Component {
         <Route
           exact
           path="/createGame/:id/createQuestion"
-          component={CategoryView}
+          component={FetchCards}
         />
       </div>
     );

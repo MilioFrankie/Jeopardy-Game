@@ -1,17 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
-import QuestionForm from "./QuestionForm";
+import CardForm from "./CardForm";
 
 class CategoryView extends React.Component {
   render() {
     const { category } = this.props;
 
     const name = category ? category.name : "";
+    const id = category ? category.id : "";
     return (
       <div>
         <h1>{name}</h1>
         <hr />
-        <QuestionForm />
+        <CardForm categoryId={id} />
       </div>
     );
     // or this
