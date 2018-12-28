@@ -1,7 +1,7 @@
 import axios from "axios";
 import category from "./category";
 
-const CARDS = "CARDS";
+const CARD = "CARD";
 const ADD_CARD = "ADD_CARD";
 const UPDATE_CARD = "UPDATE_CARD";
 const DELETE_CARD = "DELETE_CARD";
@@ -10,7 +10,8 @@ export const getCards = id => {
   return dispatch => {
     axios
       .get(`/api/categories/${id}/cards`)
-      .then(res => dispatch({ type: CARDS, cards: res.data }));
+      .then(res => dispatch({ type: CARD, cards: res.data }));
+    debugger;
   };
 };
 
@@ -25,8 +26,10 @@ export const addCard = (card, id) => {
 
 export default (state = [], action) => {
   switch (action.type) {
-    case CARDS:
+    case CARD:
+      debugger;
       return action.cards;
+      debugger;
     case ADD_CARD:
       return [action.card, ...state];
     case UPDATE_CARD:

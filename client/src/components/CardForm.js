@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { addCard } from "../reducers/card";
 
 class CardForm extends React.Component {
-  state = { question: "", correctAnswer: "" };
+  state = { question: "", correct_answer: "" };
 
   handleChange = e => {
     const { name, value } = e.target;
@@ -14,12 +14,12 @@ class CardForm extends React.Component {
     e.preventDefault();
     const question = { ...this.state };
     const { categoryId, dispatch } = this.props;
-    debugger;
     dispatch(addCard(question, categoryId));
+    this.setState({ question: "", correct_answer: "" });
   };
 
   render() {
-    const { question, correctAnswer } = this.state;
+    const { question, correct_answer } = this.state;
     return (
       <Segment raised inverted>
         <Form inverted onSubmit={this.handleSubmit}>
@@ -34,8 +34,8 @@ class CardForm extends React.Component {
             />
             <Form.Input
               fluid
-              name="correctAnswer"
-              value={correctAnswer}
+              name="correct_answer"
+              value={correct_answer}
               onChange={this.handleChange}
               placeholder="Enter Answer"
               label="Answer"

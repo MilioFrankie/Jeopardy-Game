@@ -6,6 +6,7 @@ import CategoryView from "./CategoryView";
 class FetchCards extends React.Component {
   componentDidMount() {
     this.props.dispatch(getCards(this.props.match.params.id));
+    debugger;
   }
 
   render() {

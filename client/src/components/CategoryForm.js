@@ -14,10 +14,9 @@ class CategoryForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     const category = { ...this.state };
-    const { clsoseForm, dispatch } = this.props;
+    const { dispatch } = this.props;
     const func = this.props.id ? updateCategory : addCategory;
     dispatch(func(category));
-    clsoseForm()
   };
 
   render() {
