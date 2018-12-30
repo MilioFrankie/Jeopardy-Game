@@ -57,6 +57,7 @@ class Category extends React.Component {
   render() {
     return (
       <div>
+        <h1>CREATE GAME</h1>
         <div>
           <CategoryForm />
         </div>

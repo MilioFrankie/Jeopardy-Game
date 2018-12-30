@@ -1,13 +1,31 @@
 import React from "react";
 import { connect } from "react-redux";
 import CardForm from "./CardForm";
-import { Segment } from "semantic-ui-react";
+import { Segment, Header, Button } from "semantic-ui-react";
+import { deleteCard } from "../reducers/card";
 
 class CategoryView extends React.Component {
+  handleDelete = (categoryId, id) => {
+    const {
+      dispatch,
+      history: { push }
+    } = this.props;
+    debugger;
+    dispatch(deleteCard(categoryId, id));
+    push(`/createGame/${categoryId}/createQuestion`);
+  };
+
   renderQuestions = () => {
     const { cards } = this.props;
     return cards.map(c => (
-      <Segment>
+      <Segment raised>
+        <Button
+          onClick={() => this.handleDelete(c.category_id, c.id)}
+          color="red"
+          floated="right"
+        >
+          Delete
+        </Button>
         <h1>Question: {c.question}</h1>
         <h3>Correct Answer: {c.correct_answer}</h3>
       </Segment>
@@ -20,8 +38,11 @@ class CategoryView extends React.Component {
     const id = category ? category.id : "";
     return (
       <div>
-        <h1>{name}</h1>
+        <h1>CREATE GAME</h1>
         <hr />
+        <Header as="h1" textAlign="center">
+          {name}
+        </Header>
         <CardForm categoryId={id} />
         <Segment>{this.renderQuestions()}</Segment>
       </div>

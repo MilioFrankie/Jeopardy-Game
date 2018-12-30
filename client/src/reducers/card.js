@@ -1,5 +1,4 @@
 import axios from "axios";
-import category from "./category";
 
 const CARD = "CARD";
 const ADD_CARD = "ADD_CARD";
@@ -11,25 +10,29 @@ export const getCards = id => {
     axios
       .get(`/api/categories/${id}/cards`)
       .then(res => dispatch({ type: CARD, cards: res.data }));
-    debugger;
   };
 };
 
 export const addCard = (card, id) => {
   return dispatch => {
-    debugger;
     axios
       .post(`/api/categories/${id}/cards`, { card })
       .then(res => dispatch({ type: ADD_CARD, card: res.data }));
   };
 };
 
+export const deleteCard = (categoryId, id) => {
+  return dispatch => {
+    axios
+      .delete(`/api/categories/${categoryId}/cards/${id}`)
+      .then(() => dispatch({ type: DELETE_CARD, id }));
+  };
+};
+
 export default (state = [], action) => {
   switch (action.type) {
     case CARD:
-      debugger;
       return action.cards;
-      debugger;
     case ADD_CARD:
       return [action.card, ...state];
     case UPDATE_CARD:
